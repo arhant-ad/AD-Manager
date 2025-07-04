@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skyvex IT Solutions</title>
+    <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* CSS Variables for Theme and Layout */
+    :root {
+      --color-bg: #e0f2ff;
+      --color-bg-gradient: #e0f2ff;
+      --color-card-bg: #f4faff;
+      --color-accent: #3a8bfd;
+      --color-accent-alt: #5ec6fa;
+      --color-text-primary: #23264a;
+      --color-text-secondary: #4a4a68;
+      --color-border: #e0e0ef;
+      --border-radius: 1.5rem;
+      --shadow-light: rgba(108, 99, 255, 0.10);
+      --shadow-hover: rgba(255, 77, 157, 0.18);
+      --btn-bg: var(--color-accent);
+      --btn-color: #fff;
+      --color-leadership-bg: #fff;
+    }
+
+    /* Dark theme variables */
+    [data-theme='dark'] {
+      --color-bg: #03045e;
+      --color-card-bg: #023e8a;
+      --color-accent: #90e0ef;
+      --color-accent-alt: #48cae4;
+      --color-text-primary: #caf0f8;
+      --color-text-secondary: #90e0ef;
+      --color-border: #b3dce4;
+      --shadow-light: rgba(144, 224, 239, 0.08);
+      --shadow-hover: rgba(144, 224, 239, 0.18);
+      --btn-bg: var(--color-accent);
+      --btn-color: #03045e;
+    }
+
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #e0f2ff 60%, #f4faff 100%) !important;
+      color: #111 !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition-time) ease, color var(--transition-time) ease;
+    }
+
+    main {
+      background: transparent !important;
+    }
+
+    /* Section fade-in animation */
+    section {
+      background: transparent !important;
+      margin-bottom: var(--gap-vertical);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer styles */
+    footer {
+      background: #e0f2ff !important; /* Match main background color */
+      color: #fff !important;
+      padding: 0.4rem 0.2rem !important;
+      min-height: 32px;
+      text-align: center;
+      animation: footerFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) 0.5s both;
+    }
+    footer, footer * {
+      color: #111 !important;
+    }
+    footer a {
+      color: #5ec6fa !important;
+    }
+    footer a:hover, footer a:focus {
+      color: #3a8bfd !important;
+    }
+
+    /* Change inquiry form font color for better contrast and style */
+    footer form, .footer-form, .footer-form * {
+      color: #000000 !important;
+    }
+    footer form input, footer form textarea, .footer-form input, .footer-form textarea {
+      color: #000000 !important;
+      background: rgba(255, 255, 255, 0.85) !important;
+      border: 1.5px solid #000000 !important;
+    }
+    footer form label, .footer-form label {
+      color: #000000 !important;
+    }
+    footer form ::placeholder, .footer-form ::placeholder {
+      color: #000000 !important;
+      opacity: 1;
+    }
+
+    /* Link styles */
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-time);
+    }
+    a:hover, a:focus {
+      color: var(--color-accent);
+      outline: none;
+    }
+
+    /* Header styles */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg) !important;
+      z-index: 1000;
+      transition: background var(--transition-time), border-color var(--transition-time), box-shadow var(--transition-time);
+      /* Animated header background gradient */
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-alt), var(--color-bg));
+      background-size: 200% 200%;
+      animation: headerGradientMove 8s ease-in-out infinite;
+    }
+    @keyframes headerGradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header, header * {
+      font-weight: 600 !important;
+      font-size: 1.30rem !important;
+    }
+
+    /* Container utility */
+    .container {
+      max-width: var(--max-width);
+      padding: 0 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Navigation styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .header-logo-group {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Responsive Navigation Hamburger */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--color-accent);
+      cursor: pointer;
+      margin-left: 1rem;
+      z-index: 1100;
+    }
+    @media (max-width: 900px) {
+      nav {
+        position: relative;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 8px 32px #3a5cff22;
+        border-radius: 0 0 1.5rem 1.5rem;
+        flex-direction: column;
+        gap: 0;
+        width: 220px;
+        padding: 1rem 0;
+        display: none;
+        transition: all 0.3s;
+        z-index: 1001;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links a {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 0;
+        border-bottom: 1px solid #e0e0ef;
+      }
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+    }
+    @media (max-width: 700px) {
+      h2 { font-size: 1.7rem; }
+      .leadership, .unique-card, .industry-focus-section, .team-culture-section, .contact-home-card {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        margin: 1.2rem 0.2rem 1.2rem 0.2rem;
+      }
+      .Richhi { width: 120px; height: 120px; }
+      .card { padding: 1.2rem 0.5rem; font-size: 1rem; }
+      .card svg.icon { width: 2rem; height: 2rem; }
+      .contact-home-details h2 { font-size: 1.1rem; }
+      .contact-home-phone { font-size: 1rem; }
+    }
+    @media (max-width: 500px) {
+      body {
+        font-size: 15px;
+      }
+      main {
+        padding: 1rem 0.2rem 1rem 0.2rem;
+      }
+      h1, h2 {
+        font-size: 1.1rem !important;
+      }
+      .logo {
+        width: 100%;
+        max-height: 48px;
+      }
+      .leadership, .unique-card, .industry-focus-section, .team-culture-section, .contact-home-card {
+        padding: 0.7rem 0.1rem 0.7rem 0.1rem;
+        margin: 0.7rem 0.1rem 0.7rem 0.1rem;
+      }
+      .card {
+        padding: 0.7rem 0.1rem;
+        font-size: 0.9rem;
+      }
+      .card svg.icon {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+      .contact-home-details h2 {
+        font-size: 1rem;
+      }
+      .contact-home-phone {
+        font-size: 0.9rem;
+      }
+      .nav-links {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: unset;
+        left: 0;
+        right: 0;
+        border-radius: 0 0 1rem 1rem;
+        box-sizing: border-box;
+      }
+      .container, main {
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+      }
+      .card, .contact-home-card, .leadership, .unique-card, .industry-focus-section, .team-culture-section {
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    /* Keyframe animations for hero, cards, leadership, etc. */
+    @keyframes heroText {
+      0% { opacity: 0; transform: scale(0.95) translateY(30px); }
+      60% { opacity: 1; transform: scale(1.04) translateY(-8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes cardBounce {
+      0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+      60% { opacity: 1; transform: scale(1.08) translateY(-8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes leadershipFadeIn {
+      0% { opacity: 0; transform: translateX(-60px) scale(0.95); }
+      60% { opacity: 1; transform: translateX(8px) scale(1.03); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    @keyframes quotePulse {
+      0% { opacity: 0; transform: scale(0.9); }
+      60% { opacity: 1; transform: scale(1.04); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes footerFadeIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      60% { opacity: 1; transform: translateY(-8px) scale(1.03); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--color-accent); }
+      50% { box-shadow: 0 0 16px 6px var(--color-accent); }
+    }
+
+    /* Logo styles */
+    .logo {
+      width: 230px;
+      height: auto;
+      max-height: 130px;
+      margin-right: 1.5rem;
+      display: block;
+      object-fit: contain;
+      background-image: none;
+      border-radius: 1.5rem; /* Rounded corners for header logo */
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Navigation links */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links a {
+      padding: 0.25rem;
+      border-radius: var(--border-radius);
+      -webkit-user-select: none;
+      user-select: none;
+      transition: background-color var(--transition-time), color var(--transition-time);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: var(--color-accent-alt);
+      border-radius: 2px;
+      transition: width 0.3s, left 0.3s;
+    }
+    .nav-links a:hover::after, .nav-links a:focus::after {
+      width: 80%;
+      left: 10%;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      outline: none;
+    }
+
+    /* Main content area */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 1rem 5rem;
+      background: transparent !important;
+    }
+
+    /* Section fade-in animation (again for clarity) */
+    section {
+      background: transparent !important;
+      margin-bottom: var(--gap-vertical);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Headings */
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      user-select: none;
+      line-height: 1.1;
+      opacity: 0;
+      animation: headingFadeIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    section.visible h2 {
+      opacity: 1;
+      animation-play-state: running;
+    }
+
+    /* Paragraphs */
+    p {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* Hero section styles */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: #5963d8;
+      background: #fff;
+      box-shadow: 0 8px 48px 0 #e0e0ef40;
+      border-radius: 2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      padding: 5rem 1.5rem 4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h1 {
+      color: #17207e;
+      font-size: 4.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      animation: heroTitleIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.1s both;
+    }
+    .hero p {
+      color: #4a4a68;
+      font-size: 1.35rem;
+      max-width: 600px;
+      margin: 0 auto 2.2rem auto;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: heroParaIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.35s both;
+    }
+    .hero .btn-primary {
+      background: linear-gradient(90deg, #3a5cff, #1e3a8a) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 2.5rem !important;
+      font-weight: 700 !important;
+      font-size: 1.25rem !important;
+      padding: 1.1rem 3.5rem !important;
+      box-shadow: 0 2px 16px #3a5cff33 !important;
+      transition: background 0.3s, transform 0.2s !important;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: heroBtnIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.7s both, btnPulse 2.2s infinite 1.8s;
+    }
+    .hero .btn-primary:hover, .hero .btn-primary:focus {
+      background: linear-gradient(90deg, #1e3a8a, #3a5cff) !important;
+      transform: scale(1.05) !important;
+      outline: none !important;
+    }
+    @keyframes heroTitleIn {
+      0% { opacity: 0; transform: translateY(60px) scale(0.92); }
+      60% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes heroParaIn {
+      0% { opacity: 0; transform: translateY(40px); }
+      60% { opacity: 1; transform: translateY(-4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroBtnIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      60% { opacity: 1; transform: scale(1.04); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @media (max-width: 700px) {
+      .hero { padding: 2.5rem 0.5rem 2.5rem 0.5rem; min-height: 260px; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1.05rem; }
+      .hero .btn-primary { font-size: 1rem; padding: 0.8rem 2rem; }
+    }
+
+    /* Primary button styles */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-alt));
+      color: #fff;
+      border-radius: 2rem;
+      font-weight: 700;
+      font-size: 1.18rem;
+      padding: 0.85rem 3rem;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 16px var(--shadow-light);
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background: linear-gradient(90deg, var(--color-accent-alt), var(--color-accent));
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Core Services grid - match reference style */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: none;
+    }
+    @media (max-width: 1000px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      color: #23264a;
+      box-shadow: 0 8px 32px 0 #3a5cff22, 0 1.5px 8px #e0e0ef40;
+      border: 2.5px solid #e0e0ef;
+      border-radius: 2rem;
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.18rem;
+      text-align: center;
+      transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s, background 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 200px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      /* Glassmorphism effect */
+      backdrop-filter: blur(2.5px);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -40%;
+      width: 180%;
+      height: 180%;
+      background: linear-gradient(120deg, #3a5cff33 0%, #1e3a8a22 100%);
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 2.5rem;
+      transition: opacity 0.3s;
+    }
+    .card svg.icon {
+      stroke: #3a5cff;
+      fill: none;
+      width: 3.2rem;
+      height: 3.2rem;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #3a5cff22 0%, #1e3a8a11 100%);
+      border-radius: 1.2rem;
+      padding: 0.7rem;
+      box-shadow: 0 2px 12px #3a5cff22;
+      transition: background 0.3s, box-shadow 0.3s, stroke 0.3s;
+    }
+    .card:focus,
+    .card:hover {
+      border-color: #3a5cff;
+      box-shadow: 0 12px 40px #3a5cff33, 0 2px 16px #1e3a8a22;
+      background: rgba(58,92,255,0.07);
+      outline: none;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .card:focus::before,
+    .card:hover::before {
+      opacity: 0.32;
+    }
+    .card:focus svg.icon,
+    .card:hover svg.icon {
+      background: linear-gradient(135deg, #3a5cff44 0%, #1e3a8a22 100%);
+      stroke: #1e3a8a;
+      box-shadow: 0 4px 18px #3a5cff44;
+    }
+    .card.selected {
+      border-color: #3a5cff;
+      background: rgba(58,92,255,0.09);
+      box-shadow: 0 12px 40px #3a5cff33, 0 2px 16px #1e3a8a22;
+    }
+    .card span {
+      color: #23264a;
+      font-size: 1.13rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      z-index: 2;
+      position: relative;
+      letter-spacing: 0.01em;
+    }
+
+    /* List styles */
+    ul {
+      padding-left: 1.3rem;
+      margin-top: 1rem;
+      list-style-type: disc;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    /* Leadership section styles */
+    .leadership {
+      background: #f5f6fa !important;
+      color: #e9edf2;
+      box-shadow: 0 2px 16px #00000022;
+      max-width: 850px;
+      margin: 0 auto;
+      border-radius: var(--border-radius);
+      border: 2.5px solid #ffffff;
+      padding: 2rem 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      -webkit-user-select: none;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      animation: leadershipFadeIn 1.1s cubic-bezier(0.4,0,0.2,1) both;
+    }
+    .leadership strong, .cofounder-role {
+      color: #f3f3f3;
+    }
+    /* Unified image style for all leadership images */
+    .Richhi, .leadership img {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 18px #3a8bfd22;
+      margin-right: 1.5rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+      transition: box-shadow 0.4s, transform 0.4s, border-color 0.4s;
+    }
+    .leadership:hover .Richhi, .leadership:hover img {
+      box-shadow: 0 12px 32px #3a8bfd44;
+      transform: scale(1.06) rotate(-2deg);
+      border-color: #1e90ff;
+    }
+
+    /* Quote block styles */
+    blockquote.quote {
+      max-width: 720px;
+      margin: 0 auto;
+      margin-top: var(--gap-vertical);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--color-accent);
+      padding: 3rem 2rem;
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 16px #e0e0ef40;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    blockquote.quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: quotePulse 1.2s cubic-bezier(0.4,0,0.2,1) both;
+    }
+
+    /* SVG icon styles */
+    .icon {
+      display: inline-block;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      fill: var(--color-accent);
+      width: 20px;
+      height: 20px;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Simple pulse animation for theme toggle */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 var(--color-accent);
+      }
+      50% {
+        box-shadow: 0 0 10px 4px var(--color-accent);
+      }
+    }
+
+    /* Fade-slide animation utility */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-slide.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accessibility: visually hidden skip link */
+    .visually-hidden-focusable {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .visually-hidden-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      left: auto;
+      background: #fff;
+      color: #0077b6;
+      padding: 0.5em 1em;
+      z-index: 10000;
+    }
+
+    /* Company Overview and Leadership section font color override 
+    #overview, #overview h2, #overview p,
+    #leadership, #leadership h2, #leadership p, #leadership strong, #leadership .cofounder-role {
+      color: #111 !important;
+    }*/
+
+    /* Footer form button styles */
+    footer .btn-primary, .footer-form .btn-primary, footer button[type="submit"],
+    .hero .btn-primary {
+      background: linear-gradient(90deg, #3a5cff, #1e3a8a) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 2rem !important;
+      font-weight: 700 !important;
+      font-size: 1.18rem !important;
+      padding: 0.85rem 3rem !important;
+      box-shadow: 0 2px 16px #3a5cff33 !important;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    footer .btn-primary:hover, .footer-form .btn-primary:hover, footer button[type="submit"]:hover,
+    footer .btn-primary:focus, .footer-form .btn-primary:focus, footer button[type="submit"]:focus,
+    .hero .btn-primary:hover, .hero .btn-primary:focus {
+      background: linear-gradient(90deg, #1e3a8a, #3a5cff) !important;
+      transform: scale(1.05) !important;
+      outline: none !important;
+    }
+
+    .leadership-cards {/* gap of richii and sushmita*/
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* Animated effect for Clientele & Industry Focus heading */
+    @keyframes industryFocusPop {
+      0% { opacity: 0; transform: scale(0.85) translateY(40px) rotate(-3deg); }
+      60% { opacity: 1; transform: scale(1.08) translateY(-8px) rotate(2deg); }
+      100% { opacity: 1; transform: scale(1) translateY(0) rotate(0); }
+    }
+    .industry-animated {
+      opacity: 0;
+      animation: industryFocusPop 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    section.visible .industry-animated {
+      opacity: 1;
+      animation-play-state: running;
+    }
+
+    /* Leadership name style */
+    .leader-name {
+      font-weight: bold;
+      margin-bottom: 0.15rem;
+      font-size: 2rem;
+      color: #23264a;
+      text-align: left;
+    }
+
+    /* Team & Culture section custom design */
+    .team-culture-section {
+      background: linear-gradient(120deg, #f5f6fa 60%, #e0e7ff 100%);
+      border: 2.5px solid #e0e0ef;
+      border-radius: 2rem;
+      box-shadow: 0 4px 24px #6c63ff18;
+      padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+      margin: 2.5rem auto 3.5rem auto;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      animation: teamCultureIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    section.visible .team-culture-section {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation-play-state: running;
+    }
+    @keyframes teamCultureIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      60% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .team-culture-illustration {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6c63ff33 0%, #ff4d9d22 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      box-shadow: 0 2px 12px #6c63ff22;
+    }
+    .team-culture-illustration svg {
+      width: 70px;
+      height: 70px;
+      display: block;
+    }
+    .team-culture-content {
+      flex: 1;
+    }
+    .team-culture-content h2 {
+      margin-bottom: 1rem;
+      color: #23264a;
+      font-size: 2.3rem;
+      font-weight: 700;
+      text-align: left;
+    }
+    .team-culture-content p {
+      color: #4a4a68;
+      font-size: 1.15rem;
+      margin-bottom: 0;
+      text-align: left;
+    }
+    @media (max-width: 700px) {
+      .team-culture-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .team-culture-illustration {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      .team-culture-content h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Industry Focus section custom design */
+    .industry-focus-section {
+      background: linear-gradient(120deg, #fff 60%, #e0e7ff 100%);
+      border: 2.5px solid #e0e0ef;
+      border-radius: 2rem;
+      box-shadow: 0 4px 24px #6c63ff18;
+      padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+      margin: 2.5rem auto 3.5rem auto;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    section.visible .industry-focus-section {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation-play-state: running;
+    }
+    @keyframes industryFocusIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      60% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .industry-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+    .industry-card {
+      background: #f5f6fa;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #6c63ff11;
+      padding: 1.2rem 1rem 1.2rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #23264a;
+      transition: box-shadow 0.3s, transform 0.2s;
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      animation: industryCardIn 0.9s cubic-bezier(0.4,0,0.2,1) both;
+      animation-delay: var(--delay, 0s);
+    }
+    .industry-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    @keyframes industryCardIn {
+      0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+      60% { opacity: 1; transform: translateY(-4px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .industry-icon {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.7rem;
+      background: linear-gradient(135deg, #6c63ff22 0%, #ff4d9d11 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+    .industry-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .industry-focus-section {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .industry-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Unique section card styles */
+    .unique-card {
+      max-width: 700px;
+      margin: 2.5rem auto 3.5rem auto;
+      background: linear-gradient(120deg, #e0e7ff 60%, #fff 100%);
+      border: 2.5px solid #6c63ff33;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #ff4d9d18;
+      padding: 2.2rem 1.5rem 2.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    .unique-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      gap: 0.7rem;
+    }
+    .unique-badge svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: #ff4d9d;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px #ff4d9d22;
+      padding: 0.3rem;
+    }
+    .unique-badge-title {
+      font-size: 1.2rem;
+      color: #ff4d9d;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px #fff4;
+    }
+    .unique-card h2 {
+      color: #23264a;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #6c63ff 40%, #ff4d9d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .unique-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .unique-list li {
+      background: #fff;
+      border-radius: 1.1rem;
+      box-shadow: 0 2px 12px #6c63ff11;
+      margin-bottom: 1.1rem;
+      padding: 1.1rem 1.2rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #23264a;
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      animation: industryCardIn 0.9s cubic-bezier(0.4,0,0.2,1) both;
+      animation-delay: var(--delay, 0s);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .unique-list li.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .unique-list li::before {
+      content: '\2605';
+      color: #ff4d9d;
+      font-size: 1.2rem;
+      margin-right: 0.7rem;
+      display: inline-block;
+    }
+    @media (max-width: 700px) {
+      .unique-card {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+      }
+      .unique-card h2 {
+        font-size: 1.3rem;
+      }
+      .unique-list li {
+        font-size: 0.98rem;
+        padding: 0.8rem 0.7rem;
+      }
+    }
+
+    /* Theme toggle button styles */
+    #theme-toggle {
+      transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      animation: themePulse 2.5s infinite;
+    }
+    @keyframes themePulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--color-accent); }
+      50% { box-shadow: 0 0 12px 4px var(--color-accent-alt); }
+    }
+
+    /* Contact Us section styles */
+    .contact-home-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.2rem;
+      background: linear-gradient(120deg, #e0e7ff 60%, #fff 100%);
+      border: 2.5px solid #3a5cff33;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #3a5cff18;
+      padding: 2.2rem 1.5rem 2.2rem 1.5rem;
+      max-width: 600px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    .contact-home-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #3a5cff22 0%, #1e3a8a11 100%);
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #3a5cff22;
+    }
+    .contact-home-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-home-details h2 {
+      color: #23264a;
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #6c63ff 40%, #3a5cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .contact-home-phone {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+    }
+    .contact-home-phone a {
+      color: #3a5cff;
+      text-decoration: none;
+      transition: color 0.2s;
+      animation: whatsapp-blink 1s infinite alternate;
+    }
+    .contact-home-phone a:hover,
+    .contact-home-phone a:focus {
+      color: #1e3a8a;
+      text-decoration: underline;
+    }
+    .contact-home-desc {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    @media (max-width: 700px) {
+      .contact-home-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-home-icon {
+        margin-bottom: 1rem;
+      }
+      .contact-home-details h2 {
+        font-size: 1.3rem;
+      }
+      .contact-home-phone {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Contact Us WhatsApp Button */
+    #contact-whatsapp {
+      margin: 0 auto;
+      margin-bottom: 2.5rem;
+      padding: 2.5rem 1rem;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(120deg, #e0e7ff 60%, #fff 100%);
+      border: 2.5px solid #25d366;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+    }
+    section.visible #contact-whatsapp {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation-play-state: running;
+    }
+    #contact-whatsapp .contact-home-icon {
+      background: #25d366;
+      border-radius: 1.2rem;
+      padding: 0.5rem;
+      box-shadow: 0 2px 12px #25d36622;
+      animation: whatsapp-blink 1s infinite alternate;
+      filter: brightness(0.85);
+    }
+    @keyframes whatsapp-blink {
+      0% { filter: brightness(0.85) drop-shadow(0 0 0 #25d366); }
+      50% { filter: brightness(1.1) drop-shadow(0 0 8px #25d366); }
+      100% { filter: brightness(0.85) drop-shadow(0 0 0 #25d366); }
+    }
+    #contact-whatsapp .contact-home-icon svg {
+      fill: #fff;
+    }
+    #contact-whatsapp h2 {
+      color: #23264a;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+    }
+    #contact-whatsapp .contact-home-phone {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+    }
+    #contact-whatsapp .contact-home-phone a {
+      color: #25d366;
+      text-decoration: none;
+      font-weight: 700;
+      animation: whatsapp-blink 1s infinite alternate;
+    }
+    #contact-whatsapp .contact-home-phone a:hover,
+    #contact-whatsapp .contact-home-phone a:focus {
+      text-decoration: underline;
+    }
+    #contact-whatsapp .contact-home-desc {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      #contact-whatsapp {
+        padding: 1.5rem 0.5rem;
+      }
+      #contact-whatsapp h2 {
+        font-size: 1.5rem;
+      }
+      #contact-whatsapp .contact-home-phone {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Fix inline style for industry focus section */
+    .industry-focus-desc {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    /* Safari compatibility for user-select and backdrop-filter */
+    .card, .leadership, .unique-card, .industry-focus-section, .team-culture-section, .contact-home-card {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .card {
+      -webkit-backdrop-filter: blur(2.5px);
+      backdrop-filter: blur(2.5px);
+    }
+
+    /* Responsive fix for Company Overview section */
+    @media (max-width: 700px) {
+      #overview {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      #overview h2 {
+        font-size: 1.4rem;
+      }
+      #overview p {
+        font-size: 1rem;
+        line-height: 1.5;
+        word-break: break-word;
+      }
+    }
+
+    /* Responsive images and SVGs */
+    img, svg.icon {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Prevent horizontal scroll on all devices */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    /* Improve touch targets for nav links and buttons */
+    nav a, button, .nav-toggle {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+    }
+
+    /* Extra spacing and font size for readability on small screens */
+    @media (max-width: 500px) {
+      body {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .card, .contact-home-card {
+        padding: 0.8rem 0.2rem;
+        font-size: 0.98rem;
+      }
+      .nav-links a {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+      }
+      h1, h2 {
+        font-size: 1.1rem !important;
+      }
+      .logo {
+        width: 100%;
+        max-height: 48px;
+      }
+    }
+    header, footer {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Contact Us Section - Distinct Card Style with WhatsApp Logo */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main
+      content</a>
+    <div id="header-include"></div>
+    <main id="main-content">
+      <section class="hero fade-slide" aria-label="Hero section introduction">
+        <h1>Empowering Global Innovation<br />from Bangalore to the USA</h1>
+        <p>Skyvex IT Solutions is a dynamic technology firm specializing in
+          tailored IT and technical solutions for US clients.</p>
+        <button class="btn-primary" type="button"
+          aria-label="Get started with Skyvex IT Solutions">Get Started</button>
+      </section>
+      <section id="overview" class="fade-slide"
+        aria-labelledby="overview-heading">
+        <h2 id="overview-heading">Company Overview</h2>
+        <p>Skyvex IT Solutions, headquartered in Bangalore, India, provides
+          high-quality IT services focused on innovation, reliability, and
+          scalability. We support startups and mid-sized companies with
+          customized digital transformation strategies.</p>
+      </section>
+      <section id="leadership" class="fade-slide">
+        <h2 id="leadership-heading">Leadership Spotlight</h2>
+        <div class="leadership-grid">
+          <div class="leadership-box">
+            <img class="Richhi" src="Richhi.jpg"
+              alt="Ms. Richhi Pradeep Bajpai" />
+            <h3 class="leader-name">Ms. Richhi Pradeep Bajpai</h3>
+            <span class="cofounder-role">Founder & Chief Executive
+              Officer</span>
+            <p>Ms. Richhi Pradeep Bajpai is the Founder and CEO of Skyvex IT
+              Solutions. Renowned for her visionary leadership and commitment to
+              empowering young professionals and women in technology, she drives
+              cross-border collaboration and innovation. Ms. Bajpai’s strategic
+              direction ensures Skyvex delivers exceptional value to clients
+              while fostering a culture of growth, inclusivity, and
+              excellence.</p>
+          </div>
+          <div class="leadership-box">
+            <img class="Richhi" src="Sushmita Singh.jpg"
+              alt="Ms. Sushmita Singh" />
+            <h3 class="leader-name">Ms. Sushmita Singh</h3>
+            <span class="cofounder-role">Co-founder & Chief Operating
+              Officer</span>
+            <p>Ms. Sushmita Singh brings strategic vision and operational
+              excellence to Skyvex IT Solutions as Co-founder and COO. Renowned
+              for her expertise in business development and team leadership, she
+              drives innovation and ensures seamless execution across projects.
+              Ms. Singh is instrumental in fostering a collaborative,
+              growth-oriented culture and advancing the company’s mission of
+              delivering impactful technology solutions.</p>
+          </div>
+          <div class="leadership-box">
+            <img class="Richhi" src="arhant.jpg" alt="Arhant Dhanvijay" />
+            <h3 class="leader-name">Arhant Dhanvijay</h3>
+            <span class="cofounder-role">HR Manager & Software Developer</span>
+            <p>Arhant Dhanvijay is a key member of the Skyvex leadership team,
+              serving as both HR Manager and Software Developer. He excels at
+              bridging the gap between people and technology, ensuring a
+              collaborative and innovative work environment. Arhant leads talent
+              acquisition, employee engagement, and organizational development,
+              while also contributing to the design and development of robust
+              software solutions for clients.</p>
+          </div>
+          <div class="leadership-box">
+            <img class="Richhi" src="Arthali.jpeg" alt="Miss Arthali Mohad" />
+            <h3 class="leader-name">Ms Arthali Mohad</h3>
+            <span class="cofounder-role">AI Specialist | Marketing
+              Strategist</span>
+            <p>Arthali Mohad is a passionate professional with a strong
+              foundation in Artificial Intelligence and a deep understanding of
+              modern marketing strategies. Her unique blend of technical
+              expertise and creative insight allows her to craft intelligent
+              marketing solutions that drive real results. From data-driven
+              campaign optimization to AI-powered customer insights, she
+              specializes in turning innovation into impact.</p>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="fade-slide"
+        aria-labelledby="services-heading">
+        <h2 id="services-heading">Core Services</h2>
+        <div class="grid" role="list" aria-label="Core services offered">
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f5f8ff;">
+            <!-- Laptop/Code logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="6" y="12" width="36" height="22" rx="3" fill="#e0e7ff" />
+              <rect x="10" y="16" width="28" height="14" rx="2" fill="#fff" />
+              <rect x="18" y="22" width="4" height="4" rx="1" fill="#6c63ff" />
+              <rect x="26" y="22" width="4" height="4" rx="1" fill="#ff4d9d" />
+              <rect x="14" y="32" width="20" height="2" rx="1" fill="#6c63ff" />
+            </svg>
+            <span>Custom Software Development</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Bespoke solutions tailored to your business needs, from concept to
+              deployment.
+            </div>
+          </div>
+          <!-- Web & Mobile App Development -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f8f5ff;">
+            <!-- Smartphone/Globe logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="12" y="8" width="12" height="32" rx="3" fill="#fff"
+                stroke="#6c63ff" stroke-width="2" />
+              <circle cx="18" cy="36" r="1.5" fill="#6c63ff" />
+              <circle cx="34" cy="24" r="8" fill="#e0e7ff" stroke="#ff4d9d"
+                stroke-width="2" />
+              <path d="M34 16v16M26 24h16" stroke="#ff4d9d" stroke-width="2" />
+            </svg>
+            <span>Web &amp; Mobile App Development</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Modern, responsive web and mobile apps for seamless user
+              experiences.
+            </div>
+          </div>
+          <!-- Enterprise Application Integration -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f5fff8;">
+            <!-- Link/Chain logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="18" y="22" width="12" height="4" rx="2" fill="#e0e7ff" />
+              <rect x="8" y="20" width="8" height="8" rx="4" fill="#6c63ff" />
+              <rect x="32" y="20" width="8" height="8" rx="4" fill="#ff4d9d" />
+              <path d="M16 24h16" stroke="#23264a" stroke-width="2" />
+            </svg>
+            <span>Enterprise Application Integration</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Connect and streamline your business systems for maximum
+              efficiency.
+            </div>
+          </div>
+          <!-- Cloud Solutions & DevOps -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#fff8f5;">
+            <!-- Cloud/Server logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <ellipse cx="24" cy="32" rx="14" ry="8" fill="#e0e7ff" />
+              <rect x="16" y="20" width="16" height="8" rx="2" fill="#fff"
+                stroke="#6c63ff" stroke-width="2" />
+              <rect x="20" y="24" width="8" height="4" rx="1" fill="#ff4d9d" />
+              <ellipse cx="34" cy="28" rx="4" ry="2" fill="#ff4d9d"
+                opacity="0.7" />
+            </svg>
+            <span>Cloud Solutions &amp; DevOps</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Scalable cloud infrastructure and automation for rapid, reliable
+              delivery.
+            </div>
+          </div>
+          <!-- Data Analytics & Business Intelligence -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f5fff9;">
+            <!-- Bar chart/Analytics logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="10" y="28" width="4" height="8" rx="2" fill="#6c63ff" />
+              <rect x="20" y="20" width="4" height="16" rx="2" fill="#ff4d9d" />
+              <rect x="30" y="14" width="4" height="22" rx="2" fill="#e0e7ff" />
+              <rect x="38" y="24" width="4" height="12" rx="2" fill="#6c63ff" />
+              <circle cx="24" cy="12" r="3" fill="#ff4d9d" />
+            </svg>
+            <span>Data Analytics &amp; Business Intelligence</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Unlock insights and drive decisions with advanced analytics and BI
+              tools.
+            </div>
+          </div>
+          <!-- AI & Machine Learning Solutions -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f9f5ff;">
+            <!-- AI/Brain logo -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <ellipse cx="24" cy="24" rx="10" ry="12" fill="#e0e7ff" />
+              <ellipse cx="24" cy="24" rx="6" ry="8" fill="#6c63ff" />
+              <circle cx="24" cy="24" r="2" fill="#ff4d9d" />
+              <path d="M24 12v-4M24 40v-4M12 24h-4M40 24h-4" stroke="#23264a"
+                stroke-width="2" />
+            </svg>
+            <span>AI &amp; Machine Learning Solutions</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Cutting-edge AI and ML solutions to automate, predict, and
+              optimize your business.
+            </div>
+          </div>
+          <!-- Technical Consulting & IT Staffing -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#f5faff;">
+            <!-- Professional consulting icon -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="18" r="6" fill="#6c63ff" />
+              <rect x="14" y="28" width="20" height="8" rx="4" fill="#e0e7ff" />
+              <path d="M24 24v4" stroke="#ff4d9d" stroke-width="2" />
+              <ellipse cx="24" cy="32" rx="10" ry="4" fill="#fff"
+                opacity="0.5" />
+            </svg>
+            <span>Technical Consulting &amp; IT Staffing</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Expert guidance and skilled professionals to accelerate your
+              projects.
+            </div>
+          </div>
+          <!-- Product Prototyping & MVP Development (new service example) -->
+          <div class="card" role="listitem" tabindex="0"
+            style="background:#fffaf5;">
+            <!-- Professional prototyping icon -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="10" y="14" width="28" height="20" rx="4"
+                fill="#e0e7ff" />
+              <rect x="16" y="20" width="16" height="8" rx="2" fill="#fff" />
+              <path d="M24 20v8M20 24h8" stroke="#6c63ff" stroke-width="2" />
+              <circle cx="24" cy="24" r="2" fill="#ff4d9d" />
+            </svg>
+            <span>Product Prototyping &amp; MVP Development</span>
+            <div
+              style="font-size:0.98rem;color:#4a4a68;font-weight:400;margin-top:0.5rem;">
+              Rapid prototyping and MVPs to validate your ideas and go to market
+              faster.
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="clients" class="fade-slide"
+        aria-labelledby="clients-heading">
+        <div class="industry-focus-section">
+          <h2 id="clients-heading" class="industry-animated">Clientele &
+            Industry Focus</h2>
+          <p class="industry-focus-desc">We primarily serve
+            US-based clients with tailored tech solutions across diverse
+            industries including:</p>
+          <ul class="industry-list" aria-label="Industries served">
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><path
+                    d="M12 2a7 7 0 0 1 7 7c0 4.5-7 13-7 13S5 13.5 5 9a7 7 0 0 1 7-7z"
+                    fill="#6c63ff" /><circle cx="12" cy="9" r="3"
+                    fill="#fff" /></svg></span>Healthcare Technology</li>
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13"
+                    rx="2" fill="#ff4d9d" /><rect x="7" y="3" width="10"
+                    height="4" rx="1" fill="#6c63ff" /></svg></span>E-commerce &
+              Retail</li>
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10"
+                    rx="2" fill="#6c63ff" /><path
+                    d="M6 17v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"
+                    stroke="#ff4d9d" stroke-width="2"
+                    fill="none" /></svg></span>Fintech</li>
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10"
+                    rx="2" fill="#ff4d9d" /><rect x="8" y="4" width="8"
+                    height="6" rx="1" fill="#6c63ff" /></svg></span>Real Estate
+              Tech</li>
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"
+                    rx="2" fill="#6c63ff" /><path d="M7 9h10M7 13h10"
+                    stroke="#ff4d9d" stroke-width="2" /></svg></span>EdTech</li>
+            <li class="industry-card"><span class="industry-icon"><svg
+                  viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10"
+                    rx="2" fill="#ff4d9d" /><path
+                    d="M6 17v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"
+                    stroke="#6c63ff" stroke-width="2"
+                    fill="none" /></svg></span>Logistics & Supply Chain</li>
+          </ul>
+        </div>
+      </section>
+      <section id="culture" class="fade-slide"
+        aria-labelledby="culture-heading">
+        <div class="team-culture-section">
+          <div class="team-culture-illustration" aria-hidden="true">
+            <!-- Simple team SVG illustration -->
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="20" cy="24" r="8"
+                fill="#6c63ff" /><circle cx="44" cy="24" r="8"
+                fill="#ff4d9d" /><ellipse cx="32" cy="44" rx="18" ry="10"
+                fill="#e0e7ff" /><circle cx="32" cy="20" r="10"
+                fill="#23264a" /></svg>
+          </div>
+          <div class="team-culture-content">
+            <h2 id="culture-heading">Team & Culture</h2>
+            <p>Skyvex is powered by a tech-savvy, agile team based in Bangalore
+              working in a hybrid model. Key cultural strengths include
+              quality-driven delivery, real-time client interaction, a
+              cutting-edge tech stack, and global project exposure.</p>
+          </div>
+        </div>
+      </section>
+      <section id="unique" class="fade-slide" aria-labelledby="unique-heading">
+        <div class="unique-card">
+          <div class="unique-badge">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16"
+                r="15" fill="#fff" /><path
+                d="M16 5l3.09 6.26L26 12.27l-5 4.87L22.18 26 16 21.77 9.82 26 11 17.14l-5-4.87 6.91-1.01z"
+                fill="#ff4d9d" /></svg>
+            <span class="unique-badge-title">Why Choose Us?</span>
+          </div>
+          <h2 id="unique-heading">What Makes Skyvex Unique</h2>
+          <ul class="unique-list" aria-label="Unique qualities of Skyvex">
+            <li>Strategic leadership under Ms. Richhi Bajpai</li>
+            <li>Direct client communication from India to the US</li>
+            <li>Fast, agile development cycles</li>
+            <li>Strong focus on empowering youth and women in technology</li>
+          </ul>
+        </div>
+      </section>
+      <div class="contact-query-card">
+        <div class="contact-query-icon">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp Logo" style="width:48px;height:48px;" />
+        </div>
+        <div class="contact-query-details">
+          <h2>Contact Us Instantly</h2>
+          <p>Have a question or need a quick response? Reach out to us directly
+            on WhatsApp for fast support and queries.</p>
+          <a class="contact-query-btn" href="https://wa.me/" target="_blank"
+            rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+      <section aria-label="Closing Thought">
+        <blockquote class="quote" tabindex="0">
+          “At Skyvex, we don’t just code. We connect, create, and conquer.”
+          Ms. Richhi Pradeep Bajpai
+        </blockquote>
+      </section>
+    </main>
+    <footer>
+      <!-- Footer content (can be included from footer.html) -->
+      <div id="footer-include"></div>
+    </footer>
+    <script>
+    // HTML include for header and footerfo
+    function includeHTML(id, file) {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => { document.getElementById(id).innerHTML = data; });
+    }
+    includeHTML('header-include', 'header.html');
+    includeHTML('footer-include', 'footer.html');
+
+    // Scroll reveal with IntersectionObserver
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('section, .card, .leadership, blockquote.quote');
+      const options = {
+        threshold: 0.15,
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      revealElements.forEach(el => observer.observe(el));
+
+      // Staggered animation for list items in .staggered lists
+      document.querySelectorAll('ul.staggered').forEach(ul => {
+        const lis = ul.querySelectorAll('li');
+        lis.forEach((li, idx) => {
+          li.style.animationDelay = `${0.2 + idx * 0.13}s`;
+        });
+      });
+      // Reveal list items when section is visible
+      const observer2 = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.querySelectorAll('ul.staggered li').forEach((li, idx) => {
+              setTimeout(() => li.classList.add('visible'), 200 + idx * 130);
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('section').forEach(section => {
+        if(section.querySelector('ul.staggered')){
+          observer2.observe(section);
+        }
+      });
+
+      // Animate header fade/slide-in
+      const header = document.querySelector('header');
+      if(header) {
+        setTimeout(() => header.classList.add('visible'), 100);
+      }
+
+      // Theme Toggle
+      const toggleBtn = document.getElementById('theme-toggle');
+      const htmlEl = document.documentElement;
+
+      // Check saved theme
+      const savedTheme = localStorage.getItem('theme');
+      if(savedTheme){
+        htmlEl.setAttribute('data-theme', savedTheme);
+        toggleBtn.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        let currentTheme = htmlEl.getAttribute('data-theme');
+        if (currentTheme === 'dark'){
+          htmlEl.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggleBtn.textContent = 'Dark Mode';
+        } else {
+          htmlEl.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggleBtn.textContent = 'Light Mode';
+        }
+      });
+    });
+
+    // Hamburger menu toggle for mobile (works with AJAX-included header)
+    document.addEventListener('DOMContentLoaded', function() {
+      function setupHamburgerMenu() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('main-nav');
+        if (navToggle && navLinks) {
+          navToggle.addEventListener('click', function() {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+            navLinks.classList.toggle('open');
+          });
+        }
+      }
+      // Run once on DOMContentLoaded
+      setupHamburgerMenu();
+      // Also run after header is loaded via AJAX
+     
+      const headerInclude = document.getElementById('header-include');
+      if (headerInclude) {
+        const observer = new MutationObserver(setupHamburgerMenu);
+        observer.observe(headerInclude, { childList: true, subtree: true });
+      }
+    });
+    </script>
+  </body>
+</html>
