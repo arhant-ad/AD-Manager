@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Get Started | Skyvex IT Solutions</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+            rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(270deg, #3a8bfd, #5ec6fa, #00e6d0, #3a8bfd, #b3e0ff, #3a8bfd);
+                background-size: 400% 400%;
+                animation: oceanicBgShift 16s ease-in-out infinite;
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .getstarted-header {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+            .main-center {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex: 1;
+                width: 100vw;
+                min-height: 80vh;
+            }
+            .hero-gs {
+                text-align: center;
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-gs h1 {
+                font-size: 4.5vw;
+                font-weight: 700;
+                color: #1a237e;
+                margin-bottom: 1.2vw;
+                line-height: 1.1;
+                background: linear-gradient(90deg, #1a237e, #3a8bfd, #ff4d9d, #1a237e);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: empoweringTextFade 1.2s cubic-bezier(0.4,0,0.2,1) 0.2s both, empoweringTextGradient 4s linear infinite;
+            }
+            .hero-gs p {
+                font-size: 1.3vw;
+                color: #5c5c8a;
+                margin-bottom: 2.5vw;
+                font-weight: 500;
+            }
+            .getstarted-btn {
+                padding: 1vw 2.5vw;
+                border: none;
+                border-radius: 2vw;
+                background: linear-gradient(270deg, #3a8bfd, #5ec6fa, #ff4d9d, #ffb347, #3a8bfd);
+                background-size: 400% 400%;
+                color: #fff;
+                font-size: 1.2vw;
+                font-weight: 700;
+                cursor: pointer;
+                box-shadow: 0 2px 16px #3a8bfd33;
+                transition: background 0.2s, transform 0.2s;
+                outline: none;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                animation: fadeInBtn 1.2s cubic-bezier(0.4,0,0.2,1), rainbowBtn 3.5s linear infinite, bounceBtn 1.1s 1.2s both;
+                text-decoration: none;
+            }
+            .getstarted-btn::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 300%;
+                height: 300%;
+                background: radial-gradient(circle, #fff7 0%, transparent 70%);
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(0.7);
+                animation: rippleBtn 2.2s infinite linear;
+                z-index: -1;
+            }
+            .getstarted-btn::after {
+                content: '';
+                position: absolute;
+                left: 0; top: 0; right: 0; bottom: 0;
+                border-radius: 2vw;
+                box-shadow: 0 0 0 0 #3a8bfd44;
+                pointer-events: none;
+                animation: glowBtn 2.5s 1.5s infinite alternate;
+                z-index: -2;
+            }
+            @keyframes rainbowBtn {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes rippleBtn {
+                0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.7; }
+                60% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.4; }
+                100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+            }
+            @keyframes fadeInBtn {
+                0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+                100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            @keyframes bounceBtn {
+                0% { transform: scale(0.7); }
+                60% { transform: scale(1.15); }
+                80% { transform: scale(0.95); }
+                100% { transform: scale(1); }
+            }
+            @keyframes glowBtn {
+                0% { box-shadow: 0 0 0 0 #3a8bfd44; }
+                100% { box-shadow: 0 0 32px 16px #5ec6fa66; }
+            }
+            @keyframes empoweringTextFade {
+                0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+                100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            @keyframes empoweringTextGradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes oceanicBgShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @media (max-width: 900px) {
+                .hero-gs h1 { font-size: 10vw; }
+                .hero-gs p { font-size: 3vw; }
+                .getstarted-btn { font-size: 3vw; padding: 2vw 6vw; }
+            }
+             .getstarted-logo {
+                width: 280px;
+                height: auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-center">
+            <header class="getstarted-header">
+                <img src="SKYVEX.png" alt="Skyvex Logo"
+                    class="getstarted-logo" />
+            </header>
+            <div class="hero-gs">
+                <h1>Empowering Global Innovation<br>from Bangalore to the
+                    USA</h1>
+                <p>Skyvex IT Solutions is a dynamic technology
+                    firm<br>specializing
+                    in tailored IT and technical solutions for US clients.</p>
+                <a href="index.html" class="getstarted-btn">Get Started</a>
+            </div>
+        </div>
+    </body>
+</html>

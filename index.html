@@ -1752,6 +1752,662 @@
         height: 28px !important;
       }
     }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width:  700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+    /* New Leadership Section Styles */
+    #leadership {
+      background: #f5f6fa;
+      padding: 4rem 0;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+    }
+    @media (max-width: 1100px) {
+      .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .leadership-box {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #00000022;
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .leadership-box:hover {
+      box-shadow: 0 8px 32px #3a8bfd44;
+      transform: translateY(-6px) scale(1.035);
+    }
+    .leadership-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #b3d8fd;
+      background: #fff;
+    }
+    .leader-name {
+      font-size: 1.3rem;
+      color: #23264a;
+      margin-bottom: 0.3rem;
+    }
+    .cofounder-role {
+      color: #3a8bfd;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .leadership-box p {
+      color: #4a4a68;
+      font-size: 1rem;
+    }
+    /* End of New Leadership Section Styles */
+    /* Contact query card styles */
+    .contact-query-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+      border: 2.5px solid #25d36644;
+      border-radius: 2rem;
+      box-shadow: 0 6px 32px #25d36618;
+      padding: 2.2rem 1.5rem;
+      max-width: 520px;
+      margin: 2.5rem auto 3.5rem auto;
+      position: relative;
+      overflow: hidden;
+      animation: industryFocusIn 1.1s cubic-bezier(0.4,0,0.2,1) 0.2s both;
+      z-index: 2;
+    }
+    .contact-query-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #25d36622;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #25d36622;
+    }
+    .contact-query-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-query-details h2 {
+      color: #23264a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.01em;
+    }
+    .contact-query-details p {
+      color: #4a4a68;
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+    }
+    .contact-query-btn {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 2rem;
+      padding: 0.7rem 1.7rem;
+      box-shadow: 0 2px 8px #25d36644;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      margin-top: 0.5rem;
+    }
+    .contact-query-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 0.5rem;
+        gap: 1.2rem;
+      }
+      .contact-query-details h2 {
+        font-size: 1.2rem;
+      }
+      .contact-query-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+    .contact-query-card {
+      min-height: 120px;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .contact-query-icon img {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    @media (max-width: 700px) {
+      .contact-query-card {
+        min-height: 90px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+      .contact-query-icon img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
     </style>
   </head>
   <body>
@@ -1763,8 +2419,6 @@
         <h1>Empowering Global Innovation<br />from Bangalore to the USA</h1>
         <p>Skyvex IT Solutions is a dynamic technology firm specializing in
           tailored IT and technical solutions for US clients.</p>
-        <button class="btn-primary" type="button"
-          aria-label="Get started with Skyvex IT Solutions">Get Started</button>
       </section>
       <section id="overview" class="fade-slide"
         aria-labelledby="overview-heading">
